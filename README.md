@@ -22,7 +22,7 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 
 
 ### results
-
+* Results that are shown in the priprint.
 
 ## Simple Example
 
