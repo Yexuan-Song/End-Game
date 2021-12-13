@@ -19,7 +19,7 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 * contact-matrix.R : functions for building the contact matrix with essential workers.
 
 ### data
-
+* BCCDC_report.csv : data for reopen validation. Data can be downloaded from [BCCDC](http://www.bccdc.ca/health-info/diseases-conditions/covid-19/data). 
 
 ### results
 * Results that are shown in the priprint.
