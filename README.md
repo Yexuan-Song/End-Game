@@ -16,6 +16,11 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 ## Code Layout
 ### analysis
 * age_and_contact_structured_model.R : core simulation function in the preprint.
+  * parameter rapid: rapid reopening or gradual reopening.
+  * parameter bc_scen: 70% or 90% vaccination rate.
+  * parameter reopenR: R value for reopening stage.
+  * parameter ramp_T: ramp days for gradual reopening.
+  * parameter days: number of days for reopening.
 * contact-matrix.R : functions for building the contact matrix.
 * plot_figures.R : functions for generating figures in the preprint.
 * setup.R : setup parameters for the simulation.
