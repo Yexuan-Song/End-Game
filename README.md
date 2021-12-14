@@ -15,9 +15,11 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 
 ## Code Layout
 ### analysis
-
-* contact-matrix.R : functions for building the contact matrix with essential workers.
-
+* age_and_contact_structured_model.R : core simulation function in the preprint.
+* contact-matrix.R : functions for building the contact matrix.
+* plot_figures.R : functions for generating figures in the preprint.
+* setup.R : setup parameters for the simulation.
+* utils.R : functions for plotting and summarizing.
 * vaccine-model.R : core model and simulation functions.
 
 ### data
