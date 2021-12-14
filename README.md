@@ -15,8 +15,10 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 
 ## Code Layout
 ### analysis
-* vaccine-model.R : core model and simulation functions.
+
 * contact-matrix.R : functions for building the contact matrix with essential workers.
+
+* vaccine-model.R : core model and simulation functions.
 
 ### data
 * BCCDC_report.csv : data for reopen validation. Data can be downloaded from [BC Centre for Disease Control](http://www.bccdc.ca/health-info/diseases-conditions/covid-19/data). 
