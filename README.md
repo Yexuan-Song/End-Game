@@ -29,5 +29,19 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 * Results that are shown in the priprint.
 
 ## Simple Example
+```R
+# define parameters and load data
+
+source('setup.R')
+
+# define two scenarios, comparing 70% vaccination and 90% vaccination over 900 days.
+df1 <- run_over_scen_end_game(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, reopenR=R_0, ramp_T=300, days=900)
+df2 <- run_over_scen_end_game(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=FALSE, reopenR=R_0, ramp_T=300, days=900)
+
+# compare trajectories
+
+trajectories <- compare_simulation(df1,df2)
+ggarrange(plotlist=trajectories,align="v", nrow = 3, ncol=2,common.legend = TRUE, legend = "bottom")
+```
 
 ## package and software versions
