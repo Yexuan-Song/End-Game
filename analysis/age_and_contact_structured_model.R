@@ -1,4 +1,4 @@
-run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, reopenR = R_0)
+run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, reopenR = R_0, ramp_T = ramp_T, days = T)
 {
   #First initial stage, only 12% 80+ people get vax
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
@@ -235,12 +235,12 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   
   #############################################################################
   if(rapid = FALSE){
-  R_vec = get_R_vec(R1=2.2,R2=3.0,start_ramp = 1,end_ramp = 300,ndays = 900)
+  R_vec = get_R_vec(R1=2.2,R2=3.0,start_ramp = 1,end_ramp = ramp_T,ndays = T)
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                              target_R0=R_0, in_school=TRUE, alpha_factor=alpha)
   
   alpha=0.0
-  T8 <- 900
+  T8 <- T
   n <- 0.0
   
   
@@ -250,7 +250,7 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   
   else{  
   alpha=0.0
-  T8 <- 900
+  T8 <- T
   n <- 0
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                              target_R0=R_0, in_school=TRUE, alpha_factor=alpha)
