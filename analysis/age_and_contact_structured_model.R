@@ -152,7 +152,7 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   
   alpha=0.0
   T5 <- 45
-  n <- 0.05
+  n <- 0.022
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                              target_R0=1.1, in_school=FALSE, alpha_factor=alpha)
   C[1,1] = C[1,1]*0.5
