@@ -45,3 +45,14 @@ ggarrange(plotlist=trajectories,align="v", nrow = 3, ncol=2,common.legend = TRUE
 ```
 
 ## package and software versions
+* R: version 4.0.4
+* library(tidyverse): version 1.3.0
+* library(reshape2): version 1.4.4
+* library(RColorBrewer): version 1.1-2
+* library(furrr): version 0.2.2
+* library(cowplot): version 1.1.0
+* library(lubridate): version 1.7.10
+* library(ggpubr): version 0.4.0
+* library(CanCovidData): version 0.1.5
+* library(dplyr): version 1.0.5
+* library(viridis): version 0.6.1
