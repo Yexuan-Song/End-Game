@@ -1,12 +1,12 @@
-run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, reopenR = R_0, ramp_T = ramp_T, T = T)
+run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, reopenR, ramp_T, days)
 {
-  #First initial stage, only 12% 80+ people get vax
+  #Initial stage
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                              target_R0=1.0, in_school=FALSE)
-  H = c(1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.88,1.0,1.0,1.0,1.0,1.0,1.0)*N_i 
+  H = c(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.12,0.0,0.0,0.0,0.0,0.0,0.0)*N_i 
   V0 <- N_i-H
   # Just run for one day to get df set up...
-  df0 <- run_sim_basic(C, I0, percent_vax=0.07, strategy=list(1:15), num_perday=1.0, 
+  df0 <- run_sim_basic(C, I0, percent_vax=0.12, strategy=list(1:15), num_perday=1.0, 
                        v_e=rep(ve, num_groups), v_p=rep(vp,num_groups),
                        u = u_var, num_days=2,H=H, 
                        with_essential=TRUE)
@@ -143,7 +143,7 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   # stage 4-2 start vax
   
   #90% vax, BC
-  if(bc_scen == FALSE){
+  if(bc_scen == TRUE){
     H1 = c(0.99,0.99,0.7,0.6,0.5,0.4,0.25,0.15,0.10,0.7,0.6,0.5,0.4,0.25,0.15)*N_i}
   
   #70% vax, non-BC
@@ -152,7 +152,7 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   
   alpha=0.0
   T5 <- 45
-  n <- 0.022
+  n <- 0.05
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                              target_R0=1.1, in_school=FALSE, alpha_factor=alpha)
   C[1,1] = C[1,1]*0.5
@@ -172,7 +172,7 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   # stage 5, reopening and vax
   
   #90% vax, BC
-  if(bc_scen == FALSE){
+  if(bc_scen == TRUE){
     H2 = c(0.99,0.8,0.17,0.15,0.14,0.16,0.10,0.05,0.05,0.17,0.15,0.14,0.16,0.10,0.10)*N_i}
 
   #70% vax, non-BC
@@ -197,7 +197,7 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   # stage 6, reopening and vax, no more vax (almost)
   
   #90% vax, BC
-  if(bc_scen == FALSE){
+  if(bc_scen == TRUE){
   H3 = c(0.99,0.8,0.17,0.15,0.14,0.16,0.10,0.05,0.05,0.17,0.15,0.14,0.16,0.10,0.10)*N_i}
   
   #70% vax, non-BC
@@ -235,12 +235,12 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   
   #############################################################################
   if(rapid == FALSE){
-  R_vec = get_R_vec(R1=2.2,R2=reopenR,start_ramp = 1,end_ramp = ramp_T,ndays = T)
+  R_vec = get_R_vec(R1=2.2,R2=reopenR,start_ramp = 1,end_ramp = ramp_T,ndays = days)
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                              target_R0=reopenR, in_school=TRUE, alpha_factor=alpha)
   
   alpha=0.0
-  T8 <- T
+  T8 <- days
   n <- 0.0
   
   
@@ -250,7 +250,7 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   
   else{  
   alpha=0.0
-  T8 <- T
+  T8 <- days
   n <- 0
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                              target_R0=reopenR, in_school=TRUE, alpha_factor=alpha)
