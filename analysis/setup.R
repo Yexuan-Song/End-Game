@@ -17,6 +17,8 @@ theme_set(theme_light())
 source('../vaccine-model.R') # main model & simulation funcs
 source('../utils.R') 
 source('../contact-matrix.R')
+source('../age_and_contact_structured_model.R')
+source('../plot_figures.R')
 PATH='~/essential-workers-vaccine/' # set absolute path 
 dir.create(paste0(PATH, 'generated-data'),showWarnings = FALSE)
 dir.create(paste0(PATH, 'figures'),showWarnings = FALSE)
