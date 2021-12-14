@@ -30,3 +30,4 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 
 ## Simple Example
 
+## package and software versions
