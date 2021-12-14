@@ -35,8 +35,8 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 source('setup.R')
 
 # define two scenarios, comparing 70% vaccination and 90% vaccination over 900 days. Set R=2.5 for reopening.
-df1 <- run_over_scen_end_game(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, reopenR=2.5, ramp_T=300, days=900)
-df2 <- run_over_scen_end_game(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=FALSE, reopenR=2.5, ramp_T=300, days=900)
+df1 <- run_over_scen_end_game(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, reopenR=2.5, ramp_T=300, T=900)
+df2 <- run_over_scen_end_game(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=FALSE, reopenR=2.5, ramp_T=300, T=900)
 
 # compare trajectories
 
