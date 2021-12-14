@@ -1,4 +1,4 @@
-run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, reopenR = R_0, ramp_T = ramp_T, days = T)
+run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, reopenR = R_0, ramp_T = ramp_T, T = T)
 {
   #First initial stage, only 12% 80+ people get vax
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
@@ -235,9 +235,9 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   
   #############################################################################
   if(rapid == FALSE){
-  R_vec = get_R_vec(R1=2.2,R2=R_0,start_ramp = 1,end_ramp = ramp_T,ndays = T)
+  R_vec = get_R_vec(R1=2.2,R2=reopenR,start_ramp = 1,end_ramp = ramp_T,ndays = T)
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
-                             target_R0=R_0, in_school=TRUE, alpha_factor=alpha)
+                             target_R0=reopenR, in_school=TRUE, alpha_factor=alpha)
   
   alpha=0.0
   T8 <- T
@@ -253,7 +253,7 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   T8 <- T
   n <- 0
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
-                             target_R0=R_0, in_school=TRUE, alpha_factor=alpha)
+                             target_R0=reopenR, in_school=TRUE, alpha_factor=alpha)
   
   df <- run_sim_restart(C, df_0=tail(df7, n=1), percent_vax = 1.0, strategy=list(1:15), num_perday=n,
                         v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
