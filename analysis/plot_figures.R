@@ -1,11 +1,11 @@
-compare_simulation = function(df1,df2){
+compare_simulation = function(df1,df2,name1,name2){
 
 ac <- subset(bcdat, date > "2020-12-31" & date < "2021-10-15")
 Es_final_df1    = df1[,grep("E", colnames(df1))]
 incid_final_df1 = data.frame(time=df1$time, incid=1/3*rowSums(Es_final_df1))
 
 Es_final_df2   = df2[,grep("E", colnames(df2))]
-incid_final_rapid = data.frame(time=df2$time, incid=1/3*rowSums(Es_final_df2))
+incid_final_df2 = data.frame(time=df2$time, incid=1/3*rowSums(Es_final_df2))
 
 a = incid_final_df1
 b = incid_final_df2
@@ -35,7 +35,7 @@ p_cul_df1=ggplot(data = filter(culmu_df1,startDate+15< date & date<endDate),
   geom_area(alpha=0.7,fill="lightblue") + theme(axis.title.x = element_blank(), text=element_text(size=8),
                                                 axis.text.x = element_text(angle = 45, hjust=1)) +
   ylab("Incident")+scale_x_date( date_breaks = "3 months",date_labels = "%b-%y") +
-  scale_fill_viridis(discrete = TRUE, option = "D",begin = 0.5)+ggtitle("90% Vaccination")+ ylim(0,2000000)+
+  scale_fill_viridis(discrete = TRUE, option = "D",begin = 0.5)+ggtitle(name1)+ ylim(0,1250000)+
   theme(legend.position = "bottom")
 
 p_cul_df2=ggplot(data = filter(culmu_df2,startDate+15< date & date<endDate), 
@@ -43,7 +43,7 @@ p_cul_df2=ggplot(data = filter(culmu_df2,startDate+15< date & date<endDate),
   geom_area(alpha=0.7,fill="lightblue") + theme(axis.title.x = element_blank(), text=element_text(size=8),
                                                 axis.text.x = element_text(angle = 45, hjust=1)) +
   ylab("Incident")+scale_x_date( date_breaks = "3 months",date_labels = "%b-%y") +
-  scale_fill_viridis(discrete = TRUE, option = "D",begin = 0.5)+ggtitle("70% Vaccination")+ ylim(0,2000000)+
+  scale_fill_viridis(discrete = TRUE, option = "D",begin = 0.5)+ggtitle(name2)+ ylim(0,1250000)+
   theme(legend.position = "bottom")
 
 
@@ -69,7 +69,7 @@ p1=  ggplot(data = filter(mydatC,startDate+15< date & date<endDate), aes(x=date,
         strip.text.x = element_text(size = 12),
         axis.text.x = element_text(angle = 45, hjust=1))+
   ylab("Reported Cases per 100K")+scale_x_date( date_breaks = "3 months",date_labels = "%b-%y")+
-  ggtitle("70% Vaccination")+ ylim(0,400)+
+  ggtitle(name2)+ ylim(0,80)+
   #geom_point(ac,inherit.aes = F,mapping = aes(x=date,y=cases*1e5/pop_total),color="black",alpha=0.3)+
   geom_vline(xintercept=as.numeric(as.Date("2021-12-17")),color = "black",linetype="dotdash")
 
@@ -94,7 +94,7 @@ p2=  ggplot(data = filter(mydatC,startDate+15< date & date<endDate), aes(x=date,
         strip.text.x = element_text(size = 12),
         axis.text.x = element_text(angle = 45, hjust=1))+
   ylab("Reported Cases per 100K")+scale_x_date( date_breaks = "3 months",date_labels = "%b-%y")+
-  ggtitle("90% Vaccination")+ ylim(0,400)+
+  ggtitle(name1)+ ylim(0,80)+
   # geom_point(ac,inherit.aes = F,mapping = aes(x=date,y=cases*1e5/pop_total),color="black",alpha=0.3)+
   geom_vline(xintercept=as.numeric(as.Date("2021-12-17")),color = "black",linetype="dotdash")
 
@@ -102,7 +102,6 @@ p2=  ggplot(data = filter(mydatC,startDate+15< date & date<endDate), aes(x=date,
 ######################################################
 #get_hospitalization
 
-allcases = select(df2,  H1, H2, H3, H4, H5, H6, H7, H8, H9)
 
 mydatC = add_hosp_lc(df2, hosp_efficacy=unique(df2$vp)) %>% 
   select(time, H1, H2, H3, H4, H5, H6, H7, H8, H9) %>% 
@@ -115,7 +114,7 @@ mydatC = add_hosp_lc(df2, hosp_efficacy=unique(df2$vp)) %>%
 hlc_df2 = add_hosp_lc(df2, hosp_efficacy=unique(df2$vp))
 
 Es_final_df2    = hlc_df2[,grep("H", colnames(hlc_df2))]
-incid_final_df2 = data.frame(time=hlc_rapid$time, incid=1/3*rowSums(Es_final_df2))
+incid_final_df2 = data.frame(time=hlc_df2$time, incid=1/3*rowSums(Es_final_df2))
 #write.csv(incid_final_df2,"hos_rapid.csv")
 rapid_case <- colSums(incid_final_df2)
 
@@ -139,11 +138,10 @@ p3=  ggplot(data = filter(mydatC,startDate+15< date& date<endDate), aes(x=date, 
         strip.text.x = element_text(size = 12),
         axis.text.x = element_text(angle = 45, hjust=1))+
   ylab("Hospitalization per 100K")+scale_x_date( date_breaks = "3 months",date_labels = "%b-%y")+
-  ggtitle("70% Vaccination")+ ylim(0,80)+
+  ggtitle(name2)+ ylim(0,25)+
   geom_vline(xintercept=as.numeric(as.Date("2021-12-17")),color = "black",linetype="dotdash")
 
 
-allcases = select(df1, H1, H2, H3, H4, H5, H6, H7, H8, H9) 
 
 mydatC = add_hosp_lc(df1, hosp_efficacy=unique(df1$vp)) %>% 
   select(time, H1, H2, H3, H4, H5, H6, H7, H8, H9) %>% 
@@ -162,7 +160,7 @@ p4=  ggplot(data = filter(mydatC,startDate+15< date& date<endDate), aes(x=date, 
         strip.text.x = element_text(size = 12),
         axis.text.x = element_text(angle = 45, hjust=1))+
   ylab("Hospitalization per 100K")+scale_x_date( date_breaks = "3 months",date_labels = "%b-%y")+
-  ggtitle("90% Vaccination")+ylim(0,80)+
+  ggtitle(name1)+ylim(0,25)+
   geom_vline(xintercept=as.numeric(as.Date("2021-12-17")),color = "black",linetype="dotdash")
 
 #ggarrange(p1,p2,p3,p4,p_cul_df2,p_cul_df1,align="v", nrow = 3, ncol=2,common.legend = TRUE, legend = "bottom")
