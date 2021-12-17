@@ -2,7 +2,7 @@
 #COVID-19 endgame: from pandemic to endemic? 
 #vaccination, reopening and evolution in a well-vaccinated population,
 #Dec 14, 2021
-source("Simpler_Model_setup.R") #setup model fit to data 
+source("analysis/Simpler_Model_setup.R") #setup model fit to data 
 
 #plot theme
 theme_pub <- theme(axis.text=element_text(size=15),
@@ -300,4 +300,5 @@ g_shift_drift <- ggplot() + geom_line(aes(x=output$date,y=output$incid), size =1
 #combine figures (Fig 4)
 gg <- ggarrange(g2_var_reop,g_var_w,g_shift_drift,  common.legend = FALSE,
                 labels = c("A", "B", "C"), nrow=1,font.label = list(size = 15, color="Orange"))
-ggsave(path = "~/Desktop/Endgame_paper/End-Game/results","simp_model_proj.pdf", width = 13.5, height = 5,gg)
+ggsave(path = "results","simp_model_proj.pdf", width = 13.5, height = 5,gg)
+

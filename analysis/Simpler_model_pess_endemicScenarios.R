@@ -3,7 +3,7 @@
 #vaccination, reopening and evolution in a well-vaccinated population,
 #Dec 14, 2021
 
-
+library(ggpubr)
 #########supplementary figures (S3) #########################################
 
 theme_pub <- theme(axis.text=element_text(size=15),
@@ -399,4 +399,4 @@ gg <- ggarrange(
   font.label = list(size = 20, color="Orange")
   , labels = c("A","B","C","D","E","F"))
 
-ggsave("pess_endemic_combo.png", width = 10.5, height = 11,gg)
+ggsave(path = "results", filename = "pess_endemic_combo.pdf", width = 10.5, height = 11,gg)

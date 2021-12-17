@@ -26,6 +26,13 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 * setup.R : setup parameters for the simulation.
 * utils.R : functions for plotting and summarizing.
 * vaccine-model.R : core model and simulation functions.
+* Simpler_Model_setup.R: simpler model fitting.
+* Simpler_Model_ProjScenarios.R: various model projections (results in the main text) .
+* Simpler_Model_ProjScenarios_supl.R: various model projections (results in the supplemantary Information) 
+* Simpler_Model_endemicScenarios.R: Endemic incidence as a fuction of various parameters  (results in the main text) 
+* Simpler_Model_pess_endemicScenarios.R: Endemic incidence as a fuction of various parameters  (results in the supplemantary Information) 
+
+
 
 ### data
 * BCCDC_report.csv : data for reopen validation. Data can be downloaded from [BC Centre for Disease Control](http://www.bccdc.ca/health-info/diseases-conditions/covid-19/data). 
@@ -61,3 +68,6 @@ ggarrange(plotlist=trajectories,align="v", nrow = 3, ncol=2,common.legend = TRUE
 * library(CanCovidData): version 0.1.5
 * library(dplyr): version 1.0.5
 * library(viridis): version 0.6.1
+* library(ggplot2 ): version 3.3.5
+
+
