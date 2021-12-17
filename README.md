@@ -6,7 +6,7 @@ COVID-19 remains a major public health concern, with large resurgences even wher
 
 The preprint is here (To be Added).
 
-The core model and simulation functions are adapted from [Bubar et al.](https://github.com/kbubar/vaccine_prioritization) and [Mulberry et al.](https://github.com/nmulberry/essential-workers-vaccine#strategies-for-vaccine-allocation-with-essential-workers). 
+The core model and simulation functions of the age and contact structured model are adapted from [Bubar et al.](https://github.com/kbubar/vaccine_prioritization) and [Mulberry et al.](https://github.com/nmulberry/essential-workers-vaccine#strategies-for-vaccine-allocation-with-essential-workers). 
 
 ## Data collection and code contribution
 * Age and Contact Structured Model: Yexuan Song
