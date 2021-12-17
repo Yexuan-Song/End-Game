@@ -28,9 +28,9 @@ The core model and simulation functions are adapted from [Bubar et al.](https://
 * vaccine-model.R : core model and simulation functions.
 * Simpler_Model_setup.R: simpler model fitting.
 * Simpler_Model_ProjScenarios.R: various model projections (results in the main text) .
-* Simpler_Model_ProjScenarios_supl.R: various model projections (results in the supplemantary Information) 
+* Simpler_Model_ProjScenarios_supl.R: various model projections (results in the supplementary Information) 
 * Simpler_Model_endemicScenarios.R: Endemic incidence as a fuction of various parameters  (results in the main text) 
-* Simpler_Model_pess_endemicScenarios.R: Endemic incidence as a fuction of various parameters  (results in the supplemantary Information) 
+* Simpler_Model_pess_endemicScenarios.R: Endemic incidence as a fuction of various parameters  (results in the supplementary Information) 
 
 
 
