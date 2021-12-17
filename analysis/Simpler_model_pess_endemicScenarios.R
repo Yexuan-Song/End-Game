@@ -1,7 +1,6 @@
 #Codes written by Elisha B. Are for simulations and Figures shown in the article: 
 #COVID-19 endgame: from pandemic to endemic? 
 #vaccination, reopening and evolution in a well-vaccinated population,
-#submitted to The Journal of the royal society interface. 
 #Dec 14, 2021
 
 

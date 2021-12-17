@@ -1,9 +1,10 @@
 #Codes written by Elisha B. Are for simulations and Figures shown in the article: 
 #COVID-19 endgame: from pandemic to endemic? 
 #vaccination, reopening and evolution in a well-vaccinated population,
-#submitted to The Journal of the royal society interface. 
 #Dec 14, 2021
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))#sets directory to source file location  
+
+#load relevant packages 
 rm(list=ls())
 library(lubridate)
 library(dplyr)
@@ -21,11 +22,11 @@ seir <- function(time, state, parameters) {
   with(as.list(c(state, parameters)), {
     
     mult = ifelse(time < 40,
-                  0.67,1  #     
+                  0.67,1  #initial gradual rise in cases (effectiveness of NPIs)    
     )
     
     mult1 = ifelse(time > 272,
-                  0.9,1 
+                  0.9,1 #final decline in cases in cases  (effectiveness of NPIs)   
     )
     
     #c_t is R0 multiplier 
