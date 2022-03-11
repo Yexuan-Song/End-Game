@@ -3,10 +3,10 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   #Initial stage
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                              target_R0=1.0, in_school=FALSE)
-  H = c(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.12,0.0,0.0,0.0,0.0,0.0,0.0)*N_i 
+  H = c(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.07,0.0,0.0,0.0,0.0,0.0,0.0)*N_i 
   V0 <- N_i-H
   # Just run for one day to get df set up...
-  df0 <- run_sim_basic(C, I0, percent_vax=0.12, strategy=list(1:15), num_perday=1.0, 
+  df0 <- run_sim_basic(C, I0, percent_vax=0.07, strategy=list(1:15), num_perday=1.0, 
                        v_e=rep(ve, num_groups), v_p=rep(vp,num_groups),
                        u = u_var, num_days=2,H=H, 
                        with_essential=TRUE)
@@ -90,14 +90,22 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   #############################################################################
   
   # stage 3 575 to 1250, around 35 days, only change R0
-  
   alpha=0.0
+  #35 to 30 
   T3 <- 30
   n <- 0.0 
+  #1.5 to 1.7
   
+  #higher contact rate 0-9,10-19, lower contact rate 70-79,80+.
   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                              target_R0=1.4, in_school=FALSE, alpha_factor=alpha)
-
+  #C[,1] = C[,1]*1.5
+  #C[,2] = C[,2]*1.5
+  #C[,6] = C[,6]*0.9
+  #C[,13] = C[,13]*0.9
+  #C[,8] = C[,8]*0.8
+  #C[,15] = C[,15]*0.8
+  #C[,9] = C[,9]*0.5
   C[,1] = C[,1]*1.5
   C[,2] = C[,2]*1.5
   C[,6] = C[,6]*0.5
@@ -114,6 +122,7 @@ run_over_scen_end_game = function(ve=0.75, vp=0.9, rapid=FALSE, bc_scen=TRUE, re
   df3 <- run_sim_restart(C, df_0=tail(df2, n=1), percent_vax =1.0, strategy= list(1:15), num_perday=n,
                          v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
                          u = u_var, num_days=T3, with_essential=TRUE, H=H)
+  
   
   
   
