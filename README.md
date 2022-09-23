@@ -35,7 +35,8 @@ The core model and simulation functions of the age and contact structured model 
 
 
 ### data
-* BCCDC_report.csv : data for reopen validation. Data can be downloaded from [BC Centre for Disease Control](http://www.bccdc.ca/health-info/diseases-conditions/covid-19/data). 
+* British Columbia reported case data-- BCCDC_report.csv : data for reopen validation. Data can be downloaded from [BC Centre for Disease Control](http://www.bccdc.ca/health-info/diseases-conditions/covid-19/data). 
+* South Africa reported case data--  : https://raw.githubusercontent.com/dsfsi/covid19za/master/data/covid19za_provincial_cumulative_timeline_confirmed.csv
 
 ### results
 * Results that are shown in the preprint.
